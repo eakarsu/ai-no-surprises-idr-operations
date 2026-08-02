@@ -1,0 +1,1281 @@
+{
+  "id": "ai-no-surprises-idr-operations",
+  "title": "IDR Resolution Operations",
+  "tagline": "No Surprises Act eligibility, open negotiation, QPA evidence, offer strategy, and IDR Gateway control",
+  "industry": "Federal Independent Dispute Resolution",
+  "port": 4529,
+  "accent": "#dc2626",
+  "valueLabel": "Disputed charges",
+  "value": "$74M",
+  "workflows": [
+    {
+      "id": "eligibility",
+      "title": "Federal IDR Eligibility",
+      "description": "Determine NSA applicability, service type, notice, state-law interaction, denial reason, and filing eligibility.",
+      "fields": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "serviceType",
+          "label": "Service Type",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "serviceDate",
+          "label": "Service Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "eligibilityRationale",
+          "label": "Eligibility Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "claimId": "CLM-2026-001842",
+            "serviceType": "Service Type STD-2026-104",
+            "serviceDate": "2026-09-08",
+            "eligibilityRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "claimId": "CLM-2026-004917",
+            "serviceType": "Service Type RISK-2026-227",
+            "serviceDate": "2026-08-19",
+            "eligibilityRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "claimId": "CLM-2026-007305",
+            "serviceType": "Service Type EXC-2026-319",
+            "serviceDate": "2026-08-10",
+            "eligibilityRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "open-negotiation",
+      "title": "Open Negotiation Control",
+      "description": "Track initiation notice, amount, response, negotiation period, communications, and outcome.",
+      "fields": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "initiationDate",
+          "label": "Initiation Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "initialOffer",
+          "label": "Initial Offer",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "negotiationNotes",
+          "label": "Negotiation Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "claimId": "CLM-2026-001842",
+            "initiationDate": "2026-09-08",
+            "initialOffer": 285000,
+            "negotiationNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "claimId": "CLM-2026-004917",
+            "initiationDate": "2026-08-19",
+            "initialOffer": 875000,
+            "negotiationNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "claimId": "CLM-2026-007305",
+            "initiationDate": "2026-08-10",
+            "initialOffer": 142500,
+            "negotiationNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "qpa",
+      "title": "QPA Evidence Review",
+      "description": "Assess qualifying payment amount methodology, specialty, geography, contracted rates, modifiers, and disclosures.",
+      "fields": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "qpaAmount",
+          "label": "QPA Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "geographicRegion",
+          "label": "Geographic Region",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "qpaConcerns",
+          "label": "QPA Concerns",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "claimId": "CLM-2026-001842",
+            "qpaAmount": 285000,
+            "geographicRegion": "Geographic Region STD-2026-104",
+            "qpaConcerns": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "claimId": "CLM-2026-004917",
+            "qpaAmount": 875000,
+            "geographicRegion": "Geographic Region RISK-2026-227",
+            "qpaConcerns": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "claimId": "CLM-2026-007305",
+            "qpaAmount": 142500,
+            "geographicRegion": "Geographic Region EXC-2026-319",
+            "qpaConcerns": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "batched-dispute",
+      "title": "Batched Dispute Validation",
+      "description": "Validate same parties, service codes, time period, batching criteria, line items, and exception risk.",
+      "fields": [
+        {
+          "key": "batchId",
+          "label": "Batch ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "claimCount",
+          "label": "Claim Count",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "disputedAmount",
+          "label": "Disputed Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "batchingRationale",
+          "label": "Batching Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "batchId": "Batch ID STD-2026-104",
+            "claimCount": 125,
+            "disputedAmount": 285000,
+            "batchingRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "batchId": "Batch ID RISK-2026-227",
+            "claimCount": 975,
+            "disputedAmount": 875000,
+            "batchingRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "batchId": "Batch ID EXC-2026-319",
+            "claimCount": 41,
+            "disputedAmount": 142500,
+            "batchingRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "offer-strategy",
+      "title": "IDR Offer Strategy",
+      "description": "Prepare offer, credible evidence, acuity, complexity, training, market share, and prior contracting context.",
+      "fields": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "qpaAmount",
+          "label": "QPA Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "proposedOffer",
+          "label": "Proposed Offer",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "offerRationale",
+          "label": "Offer Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "disputeId": "Dispute ID STD-2026-104",
+            "qpaAmount": 285000,
+            "proposedOffer": 285000,
+            "offerRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "disputeId": "Dispute ID RISK-2026-227",
+            "qpaAmount": 875000,
+            "proposedOffer": 875000,
+            "offerRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "disputeId": "Dispute ID EXC-2026-319",
+            "qpaAmount": 142500,
+            "proposedOffer": 142500,
+            "offerRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "title": "IDR Gateway Filing",
+      "description": "Control dispute initiation, certified entity selection, fee, notice, evidence, technical receipt, and deadlines.",
+      "fields": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "filingDeadline",
+          "label": "Filing Deadline",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "feeAmount",
+          "label": "Administrative Fee",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "filingNotes",
+          "label": "Filing Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "disputeId": "Dispute ID STD-2026-104",
+            "filingDeadline": "2026-09-08",
+            "feeAmount": 285000,
+            "filingNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "disputeId": "Dispute ID RISK-2026-227",
+            "filingDeadline": "2026-08-19",
+            "feeAmount": 875000,
+            "filingNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "disputeId": "Dispute ID EXC-2026-319",
+            "filingDeadline": "2026-08-10",
+            "feeAmount": 142500,
+            "filingNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "determination",
+      "title": "Determination & Payment",
+      "description": "Track certified IDR entity decision, prevailing offer, payment, fees, remittance, and enforcement.",
+      "fields": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "determinationDate",
+          "label": "Determination Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "determinedAmount",
+          "label": "Determined Amount",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "paymentNotes",
+          "label": "Payment Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "disputeId": "Dispute ID STD-2026-104",
+            "determinationDate": "2026-09-08",
+            "determinedAmount": 285000,
+            "paymentNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "disputeId": "Dispute ID RISK-2026-227",
+            "determinationDate": "2026-08-19",
+            "determinedAmount": 875000,
+            "paymentNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "disputeId": "Dispute ID EXC-2026-319",
+            "determinationDate": "2026-08-10",
+            "determinedAmount": 142500,
+            "paymentNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "title": "IDR Portfolio Analytics",
+      "description": "Analyze win rate, cycle time, payer, service, QPA delta, batching, fees, and collected value.",
+      "fields": [
+        {
+          "key": "period",
+          "label": "Analysis Period",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "disputeCount",
+          "label": "Dispute Count",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "winRate",
+          "label": "Win Rate",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "portfolioNotes",
+          "label": "Portfolio Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "period": "Analysis Period STD-2026-104",
+            "disputeCount": 125,
+            "winRate": 88,
+            "portfolioNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "period": "Analysis Period RISK-2026-227",
+            "disputeCount": 975,
+            "winRate": 42,
+            "portfolioNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "period": "Analysis Period EXC-2026-319",
+            "disputeCount": 41,
+            "winRate": 67,
+            "portfolioNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "eligibility",
+      "title": "Federal IDR Eligibility Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for federal idr eligibility.",
+      "table": "op_eligibility",
+      "columns": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_claimId"
+        },
+        {
+          "key": "serviceType",
+          "label": "Service Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_serviceType"
+        },
+        {
+          "key": "serviceDate",
+          "label": "Service Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_serviceDate"
+        },
+        {
+          "key": "eligibilityRationale",
+          "label": "Eligibility Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_eligibilityRationale"
+        }
+      ]
+    },
+    {
+      "id": "open-negotiation",
+      "title": "Open Negotiation Control Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for open negotiation control.",
+      "table": "op_open_negotiation",
+      "columns": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_claimId"
+        },
+        {
+          "key": "initiationDate",
+          "label": "Initiation Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_initiationDate"
+        },
+        {
+          "key": "initialOffer",
+          "label": "Initial Offer",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_initialOffer"
+        },
+        {
+          "key": "negotiationNotes",
+          "label": "Negotiation Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_negotiationNotes"
+        }
+      ]
+    },
+    {
+      "id": "qpa",
+      "title": "QPA Evidence Review Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for qpa evidence review.",
+      "table": "op_qpa",
+      "columns": [
+        {
+          "key": "claimId",
+          "label": "Claim ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_claimId"
+        },
+        {
+          "key": "qpaAmount",
+          "label": "QPA Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_qpaAmount"
+        },
+        {
+          "key": "geographicRegion",
+          "label": "Geographic Region",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_geographicRegion"
+        },
+        {
+          "key": "qpaConcerns",
+          "label": "QPA Concerns",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_qpaConcerns"
+        }
+      ]
+    },
+    {
+      "id": "batched-dispute",
+      "title": "Batched Dispute Validation Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for batched dispute validation.",
+      "table": "op_batched_dispute",
+      "columns": [
+        {
+          "key": "batchId",
+          "label": "Batch ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_batchId"
+        },
+        {
+          "key": "claimCount",
+          "label": "Claim Count",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_claimCount"
+        },
+        {
+          "key": "disputedAmount",
+          "label": "Disputed Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_disputedAmount"
+        },
+        {
+          "key": "batchingRationale",
+          "label": "Batching Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_batchingRationale"
+        }
+      ]
+    },
+    {
+      "id": "offer-strategy",
+      "title": "IDR Offer Strategy Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for idr offer strategy.",
+      "table": "op_offer_strategy",
+      "columns": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_disputeId"
+        },
+        {
+          "key": "qpaAmount",
+          "label": "QPA Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_qpaAmount"
+        },
+        {
+          "key": "proposedOffer",
+          "label": "Proposed Offer",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_proposedOffer"
+        },
+        {
+          "key": "offerRationale",
+          "label": "Offer Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_offerRationale"
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "title": "IDR Gateway Filing Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for idr gateway filing.",
+      "table": "op_gateway",
+      "columns": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_disputeId"
+        },
+        {
+          "key": "filingDeadline",
+          "label": "Filing Deadline",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_filingDeadline"
+        },
+        {
+          "key": "feeAmount",
+          "label": "Administrative Fee",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_feeAmount"
+        },
+        {
+          "key": "filingNotes",
+          "label": "Filing Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_filingNotes"
+        }
+      ]
+    },
+    {
+      "id": "determination",
+      "title": "Determination & Payment Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for determination & payment.",
+      "table": "op_determination",
+      "columns": [
+        {
+          "key": "disputeId",
+          "label": "Dispute ID",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_disputeId"
+        },
+        {
+          "key": "determinationDate",
+          "label": "Determination Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_determinationDate"
+        },
+        {
+          "key": "determinedAmount",
+          "label": "Determined Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_determinedAmount"
+        },
+        {
+          "key": "paymentNotes",
+          "label": "Payment Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_paymentNotes"
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "title": "IDR Portfolio Analytics Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for idr portfolio analytics.",
+      "table": "op_portfolio",
+      "columns": [
+        {
+          "key": "period",
+          "label": "Analysis Period",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_period"
+        },
+        {
+          "key": "disputeCount",
+          "label": "Dispute Count",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_disputeCount"
+        },
+        {
+          "key": "winRate",
+          "label": "Win Rate",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_winRate"
+        },
+        {
+          "key": "portfolioNotes",
+          "label": "Portfolio Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_portfolioNotes"
+        }
+      ]
+    },
+    {
+      "id": "payer-register",
+      "title": "Payer & Plan Register",
+      "description": "Payers, plans, networks, contacts, portals, QPA methods, and dispute behavior.",
+      "table": "op_payer_register",
+      "columns": [
+        {
+          "key": "payer",
+          "label": "Payer",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_payer"
+        },
+        {
+          "key": "plan",
+          "label": "Plan",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_plan"
+        },
+        {
+          "key": "network",
+          "label": "Network",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_network"
+        },
+        {
+          "key": "idrContact",
+          "label": "IDR Contact",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_idrContact"
+        }
+      ]
+    },
+    {
+      "id": "provider-register",
+      "title": "Provider & Facility Register",
+      "description": "Providers, facilities, specialties, states, TINs, NPIs, and contracting status.",
+      "table": "op_provider_register",
+      "columns": [
+        {
+          "key": "provider",
+          "label": "Provider",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_provider"
+        },
+        {
+          "key": "npi",
+          "label": "NPI",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_npi"
+        },
+        {
+          "key": "specialty",
+          "label": "Specialty",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_specialty"
+        },
+        {
+          "key": "state",
+          "label": "State",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_state"
+        }
+      ]
+    },
+    {
+      "id": "idr-entity-register",
+      "title": "Certified IDR Entity Register",
+      "description": "Certified entities, fees, capacity, specialties, conflicts, and outcomes.",
+      "table": "op_idr_entity_register",
+      "columns": [
+        {
+          "key": "idrEntity",
+          "label": "IDR Entity",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_idrEntity"
+        },
+        {
+          "key": "fee",
+          "label": "Entity Fee",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_fee"
+        },
+        {
+          "key": "specialty",
+          "label": "Specialty",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_specialty"
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_status"
+        }
+      ]
+    },
+    {
+      "id": "deadline-rule-library",
+      "title": "NSA Deadline Rule Library",
+      "description": "Event, federal deadline, business-day rule, evidence, and escalation.",
+      "table": "op_deadline_rule_library",
+      "columns": [
+        {
+          "key": "event",
+          "label": "Event",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_event"
+        },
+        {
+          "key": "days",
+          "label": "Deadline Days",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_days"
+        },
+        {
+          "key": "dayType",
+          "label": "Day Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_dayType"
+        },
+        {
+          "key": "evidence",
+          "label": "Required Evidence",
+          "type": "textarea",
+          "required": true,
+          "dbKey": "data_evidence"
+        }
+      ]
+    }
+  ],
+  "domainProduct": {
+    "home": "Federal IDR Operations Command",
+    "context": "A provider and payer operations system for NSA eligibility, open negotiation, QPA evidence, batching, offers, Gateway filing, and determination collection.",
+    "features": [
+      {
+        "id": "idr-intake",
+        "title": "IDR Eligibility & Intake",
+        "description": "Determine federal eligibility, service type, state-law interaction, denial reason, notice, and filing window.",
+        "view": "evidence",
+        "modules": [
+          "eligibility",
+          "provider-register"
+        ],
+        "actions": [
+          {
+            "id": "accept-idr",
+            "label": "Accept Eligible Dispute",
+            "nextStatus": "Approved",
+            "auditDetail": "Accepted dispute as federally eligible."
+          },
+          {
+            "id": "reject-idr",
+            "label": "Reject Ineligible Dispute",
+            "nextStatus": "Closed",
+            "auditDetail": "Rejected dispute with documented eligibility rationale."
+          }
+        ]
+      },
+      {
+        "id": "negotiation",
+        "title": "Open Negotiation",
+        "description": "Control initiation, offers, communications, deadlines, extensions, resolution, and proof of delivery.",
+        "view": "deadline",
+        "modules": [
+          "open-negotiation",
+          "deadline-rule-library"
+        ],
+        "actions": [
+          {
+            "id": "send-notice",
+            "label": "Send Open Negotiation Notice",
+            "nextStatus": "Review",
+            "auditDetail": "Sent compliant open-negotiation notice."
+          },
+          {
+            "id": "settle-negotiation",
+            "label": "Approve Negotiated Settlement",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved open-negotiation settlement."
+          }
+        ]
+      },
+      {
+        "id": "qpa-evidence",
+        "title": "QPA & Offer Evidence",
+        "description": "Evaluate QPA methodology and assemble credible acuity, complexity, training, market-share, and contracting evidence.",
+        "view": "control",
+        "modules": [
+          "qpa",
+          "offer-strategy"
+        ],
+        "actions": [
+          {
+            "id": "approve-offer",
+            "label": "Approve IDR Offer",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved supported IDR offer."
+          },
+          {
+            "id": "challenge-qpa",
+            "label": "Challenge QPA Methodology",
+            "nextStatus": "Review",
+            "auditDetail": "Documented QPA methodology challenge."
+          }
+        ]
+      },
+      {
+        "id": "gateway-filing",
+        "title": "IDR Gateway Filing",
+        "description": "Validate batches, parties, service lines, deadlines, certified entity, fees, evidence, and technical receipt.",
+        "view": "evidence",
+        "modules": [
+          "batched-dispute",
+          "gateway"
+        ],
+        "actions": [
+          {
+            "id": "submit-gateway",
+            "label": "Submit IDR Gateway Filing",
+            "nextStatus": "Review",
+            "auditDetail": "Submitted controlled IDR Gateway filing."
+          },
+          {
+            "id": "accept-receipt",
+            "label": "Accept Gateway Receipt",
+            "nextStatus": "Approved",
+            "auditDetail": "Accepted Gateway receipt and filing identifiers."
+          }
+        ]
+      },
+      {
+        "id": "determination-cash",
+        "title": "Determination & Payment Recovery",
+        "description": "Track decision, prevailing offer, administrative and entity fees, payment deadline, remittance, and enforcement.",
+        "view": "board",
+        "modules": [
+          "determination",
+          "portfolio"
+        ],
+        "actions": [
+          {
+            "id": "record-win",
+            "label": "Record IDR Determination",
+            "nextStatus": "Approved",
+            "auditDetail": "Recorded certified IDR determination."
+          },
+          {
+            "id": "escalate-payment",
+            "label": "Escalate Unpaid Determination",
+            "nextStatus": "Investigating",
+            "auditDetail": "Escalated overdue determination payment."
+          }
+        ]
+      }
+    ]
+  },
+  "integrations": [
+    {
+      "id": "integration-1",
+      "name": "IDR Gateway",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-2",
+      "name": "Claims platform",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-3",
+      "name": "Payer portal",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-4",
+      "name": "Contract repository",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-5",
+      "name": "Remittance feed",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    }
+  ],
+  "featureCount": 40,
+  "seededRecords": 300,
+  "demoUsers": 3,
+  "apiPort": 5529,
+  "dbName": "profit_ai_no_surprises_idr_operations"
+}
