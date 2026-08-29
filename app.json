@@ -7,6 +7,15 @@
   "accent": "#dc2626",
   "valueLabel": "Disputed charges",
   "value": "$74M",
+  "commercialExtension": {
+    "title": "IDR Recovery & Gateway Lab",
+    "summary": "Size dispute recovery and stage eligibility, QPA, offer-evidence, filing, determination, and payment controls.",
+    "baselineLabel": "Annual disputed amount", "volumeLabel": "Annual eligible disputes", "unitValueLabel": "Average disputed amount", "opportunityRateLabel": "Incremental recovery rate", "captureRateLabel": "Collectible share",
+    "defaults": { "volume": 24000, "unitValue": 1250, "opportunityRate": 18, "captureRate": 70 },
+    "pricing": "Per dispute plus an optional success fee on incremental collected reimbursement.",
+    "milestones": ["Validate eligibility for one provider group", "Assemble QPA and offer evidence", "Connect filing status and determination receipts", "Reconcile post-determination payment recovery"],
+    "connectors": [{"name":"Claims and remittance feed","status":"Pilot","purpose":"Denial, allowed amount, QPA, and payment evidence","evidence":"Claim control numbers and 835 lineage"},{"name":"IDR Gateway","status":"Planned","purpose":"Filing, fee, offer, and determination status","evidence":"Submission receipts, timestamps, and immutable response payloads"},{"name":"Contract and state-law registry","status":"Planned","purpose":"Eligibility and jurisdiction rules","evidence":"Effective-dated reviewer-approved rule versions"}]
+  },
   "workflows": [
     {
       "id": "eligibility",
